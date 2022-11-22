@@ -23,18 +23,20 @@ def read_document():
     client = pymongo.MongoClient("mongodb://localhost:27017/")
     db = client["mydatabase"]
     collection = db["customers"]
-    # find the first document in the collection
-    document = collection.find_one()
-    print(document)
+    # find the first document in the collection repeatedly
+    for i in range(10):
+        document = collection.find_one()
+        print(document)
     
 def write_document():
     client = pymongo.MongoClient("mongodb://localhost:27017/")
     db = client["mydatabase"]
     collection = db["customers"]
     # Find the first document in the collection, update it with a randomly generated value
-    query = { "name": {"$regex": ".*" }}
-    newvalues = { "$set": { "name": f'{random.choice(string.ascii_letters)}{random.randint(0, 99)}' } }
-    collection.update_many(query,newvalues)
+    for i in range(10):
+        query = { "name": {"$regex": ".*" }}
+        newvalues = { "$set": { "name": f'{random.choice(string.ascii_letters)}{random.randint(0, 99)}' } }
+        collection.update_many(query,newvalues)
 
 
 if __name__ == '__main__':
