@@ -25,29 +25,3 @@ if __name__ == "__main__":
         process.join()
 
 
-    # Connect to the MongoDB instance
-    client = MongoClient("mongodb://localhost:27017/")
-
-    # # Get the "test" database
-    # db = client["test"]
-
-    # Call the db.currentOp() method to display information on all current operations
-    # result = client.admin.command("currentOp")
-    # # result = db.command("currentOp({$all: true})")
-
-    # f = open(f'result-insert_one.txt',"w")
-    # f.write(str(result))
-    # f.close()
-    # # Get the "test" database
-    # db = client["test"]
-
-    # Call the db.runCommand() method to display information on all current operations
-    while True:
-        result = client.admin.command({"currentOp": 1})
-
-        # Loop through the current operations and display information on the insert operations
-        for operation in result["inprog"]:
-            if operation["op"] == "insert":
-                print("Insert operation:")
-                print("ns:", operation["ns"])
-                print("client:", operation["client"])
