@@ -21,13 +21,13 @@ f = open(f'result-insert_one.txt',"w")
 
 # monitor for 10 seconds
 start_time = time.time()
-seconds = 10
+seconds = 30
 while True:
     current_time = time. time()
     elapsed_time = current_time - start_time
     if elapsed_time > seconds:
         break
-    result = client.admin.command("currentOp",{"$all": True})
+    result = client.admin.command("currentOp",{"$all": True,"$maxTimeMS":"500"})
     
 
     # Loop through the current operations and display information on the insert operations
@@ -38,6 +38,5 @@ while True:
             f.write(f'client:{operation["client"]}\n')
             f.write(f'locks:{operation["locks"]}\n')
             f.write(f'lockStats:{operation["lockStats"]}\n')
-    cur_time = time.time()
 
 f.close()

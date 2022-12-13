@@ -1,25 +1,20 @@
 Insert operation:
 ns:test.users
-client:127.0.0.1:59074
+client:127.0.0.1:54799
+locks:{}
+lockStats:{}
+Insert operation:
+ns:test.users
+client:127.0.0.1:54799
 locks:{'ParallelBatchWriterMode': 'r', 'FeatureCompatibilityVersion': 'w', 'ReplicationStateTransition': 'w', 'Global': 'w', 'Database': 'w', 'Collection': 'w'}
 lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Collection': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
 Insert operation:
 ns:test.users
-client:127.0.0.1:59088
-locks:{'ParallelBatchWriterMode': 'r', 'FeatureCompatibilityVersion': 'w', 'ReplicationStateTransition': 'w', 'Global': 'w', 'Database': 'w', 'Collection': 'w'}
-lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Collection': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
+client:127.0.0.1:54810
+locks:{'ParallelBatchWriterMode': 'r', 'FeatureCompatibilityVersion': 'w', 'ReplicationStateTransition': 'w', 'Global': 'w', 'Database': 'w', 'Mutex': 'r'}
+lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
 Insert operation:
 ns:test.users
-client:127.0.0.1:59091
-locks:{}
-lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Collection': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
-Insert operation:
-ns:test.users
-client:127.0.0.1:59094
-locks:{}
-lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Collection': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
-Insert operation:
-ns:test.users
-client:127.0.0.1:59101
+client:127.0.0.1:54823
 locks:{}
 lockStats:{'ParallelBatchWriterMode': {'acquireCount': {'r': 1}}, 'FeatureCompatibilityVersion': {'acquireCount': {'w': 1}}, 'ReplicationStateTransition': {'acquireCount': {'w': 1}}, 'Global': {'acquireCount': {'w': 1}}, 'Database': {'acquireCount': {'w': 1}}, 'Collection': {'acquireCount': {'w': 1}}, 'Mutex': {'acquireCount': {'r': 1}}}
