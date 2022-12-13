@@ -3,8 +3,8 @@ from pymongo import MongoClient
 
 def insert_data(process_id):
     client = MongoClient("mongodb://localhost:27017/")
-    db = client["test"]
-    collection = db["users"]
+    db = client["admin"]
+    collection = db["testing"]
 
     # Insert a document with the process ID
     collection.insert_one({"process_id": process_id})
