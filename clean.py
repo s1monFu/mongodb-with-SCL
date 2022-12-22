@@ -18,5 +18,5 @@ def clean_profile():
 
 if __name__ == '__main__':
     delete_data()
-    clean_profile()
+    # clean_profile()
     

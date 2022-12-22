@@ -19,6 +19,8 @@ dbname = "test"
 profile_collection = "system.profile"
 
 
+
+
 def get_profile_collection():
     """Return mongo collection containing profiling records"""
     client = MongoClient("mongodb://localhost:27017/")
@@ -26,21 +28,20 @@ def get_profile_collection():
     col = db[profile_collection]
     return col
 
-def store_profile_general(query: list):
-    fieldnames = ['op','ns','command','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
-    with open('profile_general.csv','w') as csvfile:
+def insert_profile_general(query: list):
+    with open('profile_general.csv','a') as csvfile:
+        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts'],
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(query)
 
-def store_profile_lock(query: list):
-    with open('profile_lock.csv','w') as csvfile:
-        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts']
+def insert_profile_lock(query: list, idx: int):
+    with open('profile_lock.csv','a') as csvfile:
+        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts'],
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for dic in query:
             lock_dict = dic['locks']
-            print(type(lock_dict))
             lock_dict['op'] = dic['op']
             lock_dict['ns'] = dic['ns']
             lock_dict['ts'] = dic['ts']
@@ -49,15 +50,10 @@ def store_profile_lock(query: list):
 
 if __name__ == "__main__":
     # Clear the system profiling
-    queries = [{"op": "insert"},{'op': 'find'}]
+    queries = [{"op": "insert"},{'op': 'query'}]
     col = get_profile_collection()
-    # for x in col.find({},{ "ns": 'test.testing' }):
+    # for x in col.find({}):
     #     print(x)
-    for i in range(len(queries)):
-        query = list(col.find(queries[0]))
-        store_profile_general(query)
-        store_profile_lock(query)
-
-    # Show the current collection documents
-    # curdb = client[dbname]
-    # collection = curdb[collectname]
+    query = list(col.find(queries[0]))
+    insert_profile_general(query)
+    insert_profile_lock(query)
