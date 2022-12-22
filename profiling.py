@@ -27,7 +27,7 @@ def get_profile_collection():
     return col
 
 def insert_profile_general(query: list):
-    fieldnames = ['op','ns','command','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
+    fieldnames = ['op','ns','command','storage','writeConflicts','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
     with open('profile_insert_general.csv','w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()

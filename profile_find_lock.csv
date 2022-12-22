@@ -1,0 +1,11 @@
+op,ns,ts,FeatureCompatibilityVersion,Global,Mutex,ts
+query,test.testing,2022-12-22 19:00:39.058000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.058000
+query,test.testing,2022-12-22 19:00:39.060000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.060000
+query,test.testing,2022-12-22 19:00:39.060000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.060000
+query,test.testing,2022-12-22 19:00:39.142000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.142000
+query,test.testing,2022-12-22 19:00:39.147000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.147000
+query,test.testing,2022-12-22 19:00:39.148000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.148000
+query,test.testing,2022-12-22 19:00:39.152000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.152000
+query,test.testing,2022-12-22 19:00:39.157000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.157000
+query,test.testing,2022-12-22 19:00:39.161000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.161000
+query,test.testing,2022-12-22 19:00:39.242000,{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},{'acquireCount': {'r': 1}},2022-12-22 19:00:39.242000
