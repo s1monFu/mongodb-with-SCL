@@ -42,7 +42,6 @@ def insert_profile_lock(query: list):
             lock_dict = dic['locks']
             lock_dict['op'] = dic['op']
             lock_dict['ns'] = dic['ns']
-            lock_dict['ts'] = dic['ts']
             writer.writerow(lock_dict)
                 
 def find_profile_general(query: list):
@@ -61,7 +60,6 @@ def find_profile_lock(query: list):
             lock_dict = dic['locks']
             lock_dict['op'] = dic['op']
             lock_dict['ns'] = dic['ns']
-            lock_dict['ts'] = dic['ts']
             writer.writerow(lock_dict)
 
 if __name__ == "__main__":
