@@ -1,14 +1,19 @@
 import multiprocessing
 from pymongo import MongoClient
 
+dbname = "test"
+collectname = "testing"
+
 def insert_data(process_id):
     client = MongoClient("mongodb://localhost:27017/")
-    db = client["admin"]
-    collection = db["testing"]
+    db = client[dbname]
+    collection = db[collectname]
 
-    # Insert a document with the process ID
+    # # Insert document with the process ID
+    # for i in range(10):
+
     collection.insert_one({"process_id": process_id})
-
+    
 if __name__ == "__main__":
 
     # Create a list of processes

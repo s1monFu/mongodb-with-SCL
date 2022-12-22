@@ -1,3 +1,8 @@
+# This script is an earilier attempt of monitoring and recording operations on
+# . a mongoDB collection. But monitor operations in real time is not realistic
+# . This script cannot correctly capture all operations but can be an example for
+# . future research
+
 from pymongo import MongoClient
 import time
 # Connect to the MongoDB instance
