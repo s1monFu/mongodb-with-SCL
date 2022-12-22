@@ -19,8 +19,6 @@ dbname = "test"
 profile_collection = "system.profile"
 
 
-
-
 def get_profile_collection():
     """Return mongo collection containing profiling records"""
     client = MongoClient("mongodb://localhost:27017/")
@@ -48,7 +46,7 @@ def insert_profile_lock(query: list):
             writer.writerow(lock_dict)
                 
 def find_profile_general(query: list):
-    fieldnames = ['op','ns','command','keysExamined','docsExamined','cursorExhausted','numYield','nreturned','queryHash','queryExecutionEngine','locks','flowControl','responseLength','protocol','millis','planSummary','execStats','ts','client','allUsers','user']
+    fieldnames = ['op','ns','command','appName','planCacheKey','keysExamined','docsExamined','cursorExhausted','numYield','nreturned','queryHash','queryExecutionEngine','locks','flowControl','responseLength','protocol','millis','planSummary','execStats','ts','client','allUsers','user']
     with open('profile_find_general.csv','w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
