@@ -4,14 +4,13 @@ from pymongo import MongoClient
 dbname = "test"
 collectname = "testing"
 
+client = MongoClient("mongodb://localhost:27017/")
+db = client[dbname]
+collection = db[collectname]
+
 def insert_data(process_id):
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client[dbname]
-    collection = db[collectname]
-
-    # # Insert document with the process ID
+    # Insert document with the process ID
     # for i in range(10):
-
     collection.insert_one({"process_id": process_id})
     
 if __name__ == "__main__":
