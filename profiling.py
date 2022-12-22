@@ -30,14 +30,14 @@ def get_profile_collection():
 
 def insert_profile_general(query: list):
     fieldnames = ['op','ns','command','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
-    with open('profile_general.csv','w') as csvfile:
+    with open('profile_insert_general.csv','w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(query)
 
-def insert_profile_lock(query: list, idx: int):
-    with open('profile_lock.csv','a') as csvfile:
-        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts'],
+def insert_profile_lock(query: list):
+    with open('profile_insert_lock.csv','w') as csvfile:
+        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for dic in query:
@@ -47,6 +47,24 @@ def insert_profile_lock(query: list, idx: int):
             lock_dict['ts'] = dic['ts']
             writer.writerow(lock_dict)
                 
+def find_profile_general(query: list):
+    fieldnames = ['op','ns','command','keysExamined','docsExamined','cursorExhausted','numYield','nreturned','queryHash','queryExecutionEngine','locks','flowControl','responseLength','protocol','millis','planSummary','execStats','ts','client','allUsers','user']
+    with open('profile_find_general.csv','w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(query)
+
+def find_profile_lock(query: list):
+    with open('profile_find_lock.csv','w') as csvfile:
+        fieldnames = ['op','ns','ts','FeatureCompatibilityVersion','Global','Mutex','ts']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for dic in query:
+            lock_dict = dic['locks']
+            lock_dict['op'] = dic['op']
+            lock_dict['ns'] = dic['ns']
+            lock_dict['ts'] = dic['ts']
+            writer.writerow(lock_dict)
 
 if __name__ == "__main__":
     # Clear the system profiling
@@ -54,6 +72,13 @@ if __name__ == "__main__":
     col = get_profile_collection()
     # for x in col.find({}):
     #     print(x)
+    # Insert
     query = list(col.find(queries[0]))
-    insert_profile_general(query,i)
-    insert_profile_lock(query,i)
+    insert_profile_general(query)
+    insert_profile_lock(query)
+
+    # Read
+    query = list(col.find(queries[1]))
+    find_profile_general(query)
+    find_profile_lock(query)
+    
