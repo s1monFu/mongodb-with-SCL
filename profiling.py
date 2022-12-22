@@ -8,26 +8,36 @@
 # Delete the profiling collection
 # . db.setProfilingLevel(0)
 # . db.system.profile.drop()
+# Show profile
+# . db.system.profile.find( { ns : 'test.testing' } ).pretty()
 
 from pymongo import MongoClient
-from pymongo import Connection
 import multiprocessing
+import csv
 
 dbname = "test"
 profile_collection = "system.profile"
 
+queries = [{"op": "insert"}]
+fieldnames = ['op','ns','command','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
 def get_profile_collection():
     """Return mongo collection containing profiling records"""
-    con = Connection()
-    db = con[dbname]
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client[dbname]
     col = db[profile_collection]
     return col
 
 if __name__ == "__main__":
     # Clear the system profiling
 
-    profile = get_profile_collection()
-    print(profile)
+    col = get_profile_collection()
+    # for x in col.find({},{ "ns": 'test.testing' }):
+    #     print(x)
+    query = list(col.find(queries[0]))
+    with open('profile.csv','w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(query)
 
     # Show the current collection documents
     # curdb = client[dbname]
