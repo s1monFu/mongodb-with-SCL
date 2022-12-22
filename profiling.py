@@ -29,8 +29,8 @@ def get_profile_collection():
     return col
 
 def insert_profile_general(query: list):
-    with open('profile_general.csv','a') as csvfile:
-        fieldnames = ['op','ns','ts','ParallelBatchWriterMode','FeatureCompatibilityVersion','ReplicationStateTransition','Global','Database','Collection','Mutex','ts'],
+    fieldnames = ['op','ns','command','ninserted','keysInserted','numYield','locks','flowControl','responseLength','protocol','millis','ts','client','allUsers','user']
+    with open('profile_general.csv','w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(query)
@@ -55,5 +55,5 @@ if __name__ == "__main__":
     # for x in col.find({}):
     #     print(x)
     query = list(col.find(queries[0]))
-    insert_profile_general(query)
-    insert_profile_lock(query)
+    insert_profile_general(query,i)
+    insert_profile_lock(query,i)
